@@ -5,7 +5,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Bildhub - Construction HTML Template</title>
+        <title>Pigeon Nets For Balcony </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,6 +25,74 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <style>
+            .form-popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    width: 90%;
+    max-width: 500px; /* Increased size */
+    padding: 30px; /* Increased padding */
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.form-container input[type=text],
+.form-container input[type=email],
+.form-container input[type=tel],
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+.form-container input[type=text]:focus,
+.form-container input[type=email]:focus,
+.form-container input[type=tel]:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.form-container .btn:hover {
+    opacity: 1;
+}
+
+.form-container .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #f44336;
+    cursor: pointer;
+}
+        </style>
     </head>
     <body>
 
@@ -693,7 +761,7 @@
                             <div class="counter-box text-center d-flex justify-content-center">
                                 <h1>129<span>+</span></h1>
                                 <div class="counter-right-text">
-                                    <p>Industrial</p>
+                                    <p>Total</p>
                                     <p><span>Experts</span></p>
                                 </div>
                             </div>
@@ -725,7 +793,7 @@
                         <div class="col-xl-7 col-lg-7 col-md-12" >
                             <div class="contact-right">
                              
-                                <div class="about-title mb-20">
+                                <div class="about-title mb-20"><br>
                                     <h5>Free Quote</h5>
                                     <h2>Get A Free consultation<span>.</span></h2>
                                 </div>
@@ -769,7 +837,7 @@
           
         </main>
     <!-- footer start -->
-    <footer>
+    <!-- <footer>
         <div class=" footer-2 footer-height pb-40">
             <div class="container">
                 <div class="row">
@@ -836,7 +904,7 @@
             </div>
         </div>
        
-    </footer>
+    </footer> -->
     <!-- footer end -->
 
           <!-- testimonial start -->
@@ -894,6 +962,40 @@
             </a>
           </div>
         <!-- footer start -->
+
+
+
+        <div class="form-popup" id="popupForm">
+            <form action="/submit" method="POST" class="form-container" id="contactForm">
+                <span class="close" id="closeFormBtn">&times;</span>
+                <h2>Contact Us</h2>
+    
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Enter Name" name="name" id="name" required>
+    
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="email" id="email" required>
+    
+                <label for="phone"><b>Phone</b></label>
+                <input type="tel" placeholder="Enter Phone" name="phone" id="phone" pattern="[0-9]{10}" required>
+    
+                <label for="service"><b>Service</b></label>
+                <select name="service" id="service" required>
+                    <option value="">Select Service</option>
+                    <option value="installation">Balcony Safety Nets</option>
+                    <option value="maintenance">Pigeon Safety Nets</option>
+                    <option value="repair">Monkey Safety Nets</option>
+                    <option value="repair">Children Safety Nets</option>
+                    <option value="repair">Coconut Safety Nets</option>
+                    <option value="repair">PARKING LOT SAFETY NETS</option>
+                </select>
+    
+             
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </div>
+    
+    
         <footer>
             <div class="footer-area footer-2 footer-height pt-100 pb-40">
                 <div class="container">
@@ -987,6 +1089,33 @@
         <script src="js/jquery.magnific-popup.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+    // Automatically display the form when the page loads
+    const popupForm = document.getElementById('popupForm');
+    popupForm.style.display = 'block';
+
+    // Close the form when the "Close" button is clicked
+    document.getElementById('closeFormBtn').addEventListener('click', function() {
+        popupForm.style.display = 'none';
+    });
+
+    // Add form validation before submission
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        // Example: Simple validation (HTML5 validation attributes handle most cases)
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value.trim();
+
+        if (!name || !email || !phone || !service || !message) {
+            alert('Please fill out all fields.');
+            event.preventDefault();
+        }
+    });
+});
+        </script>
     </body>
 
 <!-- Mirrored from html.xpressbuddy.com/bildhub/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Jul 2024 12:37:15 GMT -->
